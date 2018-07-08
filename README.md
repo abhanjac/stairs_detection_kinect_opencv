@@ -43,6 +43,7 @@ that resembles a stair with a single step, like a concrete beam lying on the gro
 ### Preprocessing of the images for down-stairs:
 To filter out the unwanted objects like walls or handrails, we consider only the lower central part of the image for our 
 analysis (the interest region). This interest region is shown below (right image is BGR image, left is Depth image).
+
 <img src="https://github.com/abhanjac/stairs_detection_kinect_opencv/blob/master/images/down_stairs_interest_region.png">
 
 # Future Improvements: 
