@@ -252,8 +252,13 @@ The cad drawing and the image of the actual setup is shown below.
 These are not two different setups. The upper part of the platform containing the kinect can be detatched and mounted at the 
 top of the lower section to configure it for REAL stairs.
 
+# Results:
+The final working of the [detect_stairs](https://github.com/abhanjac/stairs_detection_kinect_opencv/blob/master/codes/detect_stairs.cpp)
+can be seen in the videos in the [test_videos](https://github.com/abhanjac/stairs_detection_kinect_opencv/tree/master/testing_videos) directory.
+
 # Future Improvements: 
 * Use of a smaller depth camera like the Intel Realsense.
 * Use of compact single board computer like the Odroid or Raspberri Pi or Nvidia Jetson etc.
 * Use of Deep Learning framework.
 * Integrate the camera to a some kind of eyerwear (like glasses), so that stairs are still visible if the user wears trousers.
+
