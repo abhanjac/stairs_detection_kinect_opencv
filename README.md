@@ -190,12 +190,14 @@ Function of the average depth of all the points between P2 and P3 in terms of th
 point P2.
 
 **5. FUNCTION_5:**
-Slope of the line joining the points P1 and P3 is referred to as Slope_P1_P3.
 Slope_P1_P3 = (P1.depth – P3.depth) / (P1.y – P3.y)
 
+Slope of the line joining the points P1 and P3 is referred to as Slope_P1_P3.
+
 **6. FUNCTION_6:**
-Slope of the line joining the points P2 and P4 is referred to as Slope_P2_P4.
 Slope_P2_P4 = (P2.depth – P4.depth) / (P2.y – P4.y)
+
+Slope of the line joining the points P2 and P4 is referred to as Slope_P2_P4.
 
 All the 𝜙 are parameters that are determined by linear regression over 59 different example images of the actual REAL and 
 MODEL “up-stairs”.
@@ -233,6 +235,22 @@ distance of the edges from the camera is displayed, as shown in figure below.
 <img src="https://github.com/abhanjac/stairs_detection_kinect_opencv/blob/master/images/up_stairs_detected_model_stairs.png">
 
 <img src="https://github.com/abhanjac/stairs_detection_kinect_opencv/blob/master/images/up_stairs_detected_real_stairs.png">
+
+# Portable Hardware Setup for testing:
+Finally a portable wheeled platform is created for the entire setup.
+This was designed in **Solidworks**.
+The cad drawing and the image of the actual setup is shown below.
+
+**Setup for detecting MODEL stairs:**
+
+<img src="https://github.com/abhanjac/stairs_detection_kinect_opencv/blob/master/images/portable_setup_for_model_stairs_detection.png" width="650" height="450">
+
+**Setup for detecting REAL stairs:**
+
+<img src="https://github.com/abhanjac/stairs_detection_kinect_opencv/blob/master/images/portable_setup_for_real_stairs_detection.png" width="650" height="650">
+
+These are not two different setups. The upper part of the platform containing the kinect can be detatched and mounted at the 
+top of the lower section to configure it for REAL stairs.
 
 # Future Improvements: 
 * Use of a smaller depth camera like the Intel Realsense.
