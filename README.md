@@ -26,10 +26,25 @@ when the user is close enough.
 * Opencv libraies, Ubuntu 16.04.
 * Microsoft Kinect XBOX 360, Laptop computer. 
 * Model stairs provided:
+<img src="https://github.com/abhanjac/stairs_detection_kinect_opencv/blob/master/images/model_stairs.jpg" width="250" height="300">
 
 # Algorithm Description:
 
+### Algorithm for detecting stairs moving down (Down-stairs):
+This algorithm only takes into account the first two steps of the stairs. This is done for two reasons. 
+1. So that it is able to detect the stairs that actually have only two steps. 
+2. As a person climbs down, the number of steps visible to him becomes fewer. And just before reaching the ground, only two 
+or three steps might be visible. 
 
+**"So, why not make the algorithm try to detect only one step then?"**
+Detection of a single step is also possible, but there would be a lot of false detections. There are a number of objects
+that resembles a stair with a single step, like a concrete beam lying on the ground or the edges of the sidewalk beside the streets, etc. Hence, considering only the first two steps of the stairs, seems to be the optimal choice.
+
+### Preprocessing of the images for down-stairs:
+To filter out the unwanted objects like walls or handrails, we consider only the lower central part of the image for our 
+analysis (the interest region). This interest region is shown below (right image is BGR image, left is Depth image).
+
+<img src="https://github.com/abhanjac/stairs_detection_kinect_opencv/blob/master/images/down_stairs_interest_region.png">
 
 # Future Improvements: 
 * Use of a smaller depth camera like the Intel Realsense.
