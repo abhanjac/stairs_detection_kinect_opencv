@@ -30,7 +30,7 @@ when the user is close enough.
 
 # Algorithm Description:
 
-### Algorithm for detecting stairs moving down (Down-stairs):
+## Algorithm for detecting stairs moving down (Down-stairs):
 This algorithm only takes into account the first two steps of the stairs. This is done for two reasons. 
 1. So that it is able to detect the stairs that actually have only two steps. 
 2. As a person climbs down, the number of steps visible to him becomes fewer. And just before reaching the ground, only two 
@@ -131,6 +131,26 @@ distance of the edges from the camera is displayed, as shown in following figure
 <img src="https://github.com/abhanjac/stairs_detection_kinect_opencv/blob/master/images/down_stairs_detected_model_stairs.png">
 
 <img src="https://github.com/abhanjac/stairs_detection_kinect_opencv/blob/master/images/down_stairs_detected_real_stairs.png">
+
+## Algorithm for detecting stairs moving up (Up-stairs):
+
+### Assumptions and Conventions:
+Here also the first two steps of the stairs are considered for the same reason.
+
+### Preprocessing of the images for: MODEL “up-stairs”:
+Interest region for filtering out the unwanted objects is shown in the following figure.
+
+<img src="https://github.com/abhanjac/stairs_detection_kinect_opencv/blob/master/images/up_stairs_interest_region.png">
+
+### Feature Extraction from the images for up-stairs:
+Multiple parallel scans of the points in the interest region are taken. The black and red dots in the depth and BGR images 
+shows these scanned points.
+Plotting the depths of the scanned points against the y-coordinates of their corresponding pixels gives the following 
+figure.
+
+<img src="https://github.com/abhanjac/stairs_detection_kinect_opencv/blob/master/images/up_stairs_depth_vs_y_coordinate.png">
+
+The plot shows that there is a change in the slope of the graph at the locations corresponding to the inner edges at the base of the steps and also at their outer edges. At each of the inner edges the graph hits a local maxima, where the slope changes from positive to negative, and at each outer edge, there is a local minima, where the slope changes from negative to positive. These maxima and minima points will be our feature points and the change in the slope of the graph is used to locate and extract these points.
 
 
 # Future Improvements: 
