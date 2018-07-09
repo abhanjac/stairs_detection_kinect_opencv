@@ -69,7 +69,7 @@ P3 = Scanned Point just **below** the **second edge** location.
 P4 = Scanned Point just **above** the **second edge** location.
 
 ### Parameterized model of “down-stairs”:
-In practice, there might be some other objects in the scene that can also have edges, e.g. the edge of a shelf, chair, set of drawers, etc. So, to know that these features truly represent a “down-stair”, we define a set of functions that describes the relationship between these features which constitutes a parameterized model of the “down-stairs” case.
+In practice, there might be some other objects in the scene that can also have edges, e.g. the edge of a shelf, chair, set of drawers, etc. So, to know that these features truly represent a “down-stair”, we define a set of functions that describes the relationship between these features which constitutes a parameterized model of the “down-stairs”.
 
 **1. FUNCTION_1:**
 P2.depth = 𝜃00 + 𝜃10 * P1.y + 𝜃20 * P1.depth.
@@ -140,7 +140,7 @@ Here also the first two steps of the stairs are considered for the same reason.
 ### Preprocessing of the images for: MODEL “up-stairs”:
 Interest region for filtering out the unwanted objects is shown in the following figure.
 
-<img src="https://github.com/abhanjac/stairs_detection_kinect_opencv/blob/master/images/up_stairs_interest_region.png">
+<img src="https://github.com/abhanjac/stairs_detection_kinect_opencv/blob/master/images/up_stairs_interest_region.png" width="700" height="250">
 
 ### Feature Extraction from the images for up-stairs:
 Multiple parallel scans of the points in the interest region are taken. The black and red dots in the depth and BGR images 
@@ -150,8 +150,89 @@ figure.
 
 <img src="https://github.com/abhanjac/stairs_detection_kinect_opencv/blob/master/images/up_stairs_depth_vs_y_coordinate.png">
 
-The plot shows that there is a change in the slope of the graph at the locations corresponding to the inner edges at the base of the steps and also at their outer edges. At each of the inner edges the graph hits a local maxima, where the slope changes from positive to negative, and at each outer edge, there is a local minima, where the slope changes from negative to positive. These maxima and minima points will be our feature points and the change in the slope of the graph is used to locate and extract these points.
+There is a change in the slope of the graph at the locations corresponding to the inner edges and also at their outer edges 
+of the steps. At each of the inner edges the graph hits a local maxima, and at each outer edge, there is a local minima. 
+These maxima and minima points will be the feature points. The points D and B show the maxima points and C and A show the minima points.
 
+An example of the four feature points of one particular scan is shown in the following figure.
+
+P1 = Scanned Point on the **inner edge** of the **first step** (first maxima).
+P2 = Scanned Point on the **outer edge** of the **first step** (first minima).
+P3 = Scanned Point on the **inner edge** at the **second step** (second maxima).
+P4 = Scanned Point on the **outer edge** of the **second step** (second minima).
+
+<img src="https://github.com/abhanjac/stairs_detection_kinect_opencv/blob/master/images/up_stairs_feature_points_location.png" width="500" height="200">
+
+### Parameterized model of up-stairs:
+In order to know that these features truly represent “up-stairs”, we define a set of functions that describes the 
+relationship between these features. This constitutes a parameterized model of the Model “up-stairs”.
+
+**1. FUNCTION_1:**
+P2.depth = 𝜙00 + 𝜙10 * P1.y + 𝜙20 * P1.depth.
+
+Function of depth of point P2 in terms of the y-coordinate and depth of point P1.
+
+**2. FUNCTION_2:**
+P3.depth = 𝜙01 + 𝜙11 * P1.y + 𝜙21 * P1.depth.
+
+Function of the depth of point P3 in terms of the y-coordinate and depth of point P1.\
+
+**3. FUNCTION_3:**
+P3.y = 𝜙02 + 𝜙12 * P1.x + 𝜙22 * P1.y + 𝜙32 * P1.depth.
+
+Function of the y-coordinate of point P3 in terms of the x-coordinate, y-coordinate, and depth of point P1.
+
+**4. FUNCTION_4:**
+AvD_P2_P3 = 𝜙03 + 𝜙13 * P2.x + 𝜙23 * P2.y + 𝜙33 * P1.depth
+
+Average depth of all the points between P2 and P3 is represented by AvD_P2_P3. 
+Function of the average depth of all the points between P2 and P3 in terms of the x-coordinate, y-coordinate, and depth of 
+point P2.
+
+**5. FUNCTION_5:**
+Slope of the line joining the points P1 and P3 is referred to as Slope_P1_P3.
+Slope_P1_P3 = (P1.depth – P3.depth) / (P1.y – P3.y)
+
+**6. FUNCTION_6:**
+Slope of the line joining the points P2 and P4 is referred to as Slope_P2_P4.
+Slope_P2_P4 = (P2.depth – P4.depth) / (P2.y – P4.y)
+
+All the 𝜙 are parameters that are determined by linear regression over 59 different example images of the actual REAL and 
+MODEL “up-stairs”.
+
+**Parameters: MODEL “up-stairs”**
+
+𝜙00 = -97.3592 ; 𝜙10 = 0.0585 ; 𝜙20 = 0.9768
+
+𝜙01 = -36.7519 ; 𝜙11 = 0.0494 ; 𝜙21 = 1.0065
+
+𝜙02 = -349.7489 ; 𝜙12 = -0.0112 ; 𝜙22 = 1.0507 ; 𝜙32 = 0.2898
+
+𝜙03 = 28.0292 ; 𝜙13 = -0.0081 ; 𝜙23 = -0.0013 ; 𝜙33 = 1.0301
+
+**Parameters: REAL “up-stairs”**
+
+𝜙00 = -220.2735 ; 𝜙10 = 0.0945 ; 𝜙20 = 1.0829
+
+𝜙01 = -5.9768 ; 𝜙11 = 0.0802 ; 𝜙21 = 1.0612
+
+𝜙02 = -351.6235 ; 𝜙12 = 0.0031 ; 𝜙22 = 0.9932 ; 𝜙32 = 0.1894
+
+𝜙03 = 118.7745 ; 𝜙13 = -0.0120 ; 𝜙23 = 0.0253 ; 𝜙33 = 1.0189
+
+### How the algorithm works:
+The interest region is scanned to search for feature points. If there are at least two local minima and two local maxima 
+points along these scans, then (assuming them to be potential stair edges) the points are extracted as the four feature 
+points (P1, P2, P3, P4). As described in the previous sections, the x and y coordinates and the depths of these points are 
+saved for further analysis. Their values are then plugged into the functions of the parameterized model. If we observe that 
+the outputs of the functions are within some close acceptable thresholds of those values, then the algorithm declares that 
+the Model “up-stairs” is detected. If there is some other object that the camera is looking at, the functions of the 
+parameterized model will never give proper values all at the same time. Once a stair is found, the edges are marked, and the 
+distance of the edges from the camera is displayed, as shown in figure below.
+
+<img src="https://github.com/abhanjac/stairs_detection_kinect_opencv/blob/master/images/up_stairs_detected_model_stairs.png">
+
+<img src="https://github.com/abhanjac/stairs_detection_kinect_opencv/blob/master/images/up_stairs_detected_real_stairs.png">
 
 # Future Improvements: 
 * Use of a smaller depth camera like the Intel Realsense.
