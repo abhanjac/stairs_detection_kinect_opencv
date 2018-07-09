@@ -72,20 +72,23 @@ P4 = Scanned Point just **above** the **second edge** location.
 In practice, there might be some other objects in the scene that can also have edges, e.g. the edge of a shelf, chair, set of drawers, etc. So, to know that these features truly represent a “down-stair”, we define a set of functions that describes the relationship between these features which constitutes a parameterized model of the “down-stairs” case.
 
 **1. FUNCTION_1:**
-P2.depth = 𝜃00 + 𝜃10 * P1.y + 𝜃20 * P1.depth
+P2.depth = 𝜃00 + 𝜃10 * P1.y + 𝜃20 * P1.depth.
+
 Function of depth of point P2 in terms of the y-coordinate and depth of point P1.
 
 **2. FUNCTION_2:**
-P3.depth = 𝜃01 + 𝜃11 * P1.y + 𝜃21 * P1.depth
+P3.depth = 𝜃01 + 𝜃11 * P1.y + 𝜃21 * P1.depth.
+
 Function of depth of point P3 in terms of the y-coordinate and depth of point P1.
 
 **3. FUNCTION_3:**
-P3.y = f (P1.x, P1.y, P1.depth) or,
-P3.y = 𝜃02 + 𝜃12 * P1.x + 𝜃22 * P1.y + 𝜃32 * P1.depth
+P3.y = 𝜃02 + 𝜃12 * P1.x + 𝜃22 * P1.y + 𝜃32 * P1.depth.
+
 Function of the y-coordinate of point P3 in terms of the x-coordinate, y-coordinate, and depth of point P1.
 
 **4. FUNCTION_4:**
-AvD_P2_P3 = 𝜃03 + 𝜃13 * P2.x + 𝜃23 * P2.y + 𝜃33 * P1.depth
+AvD_P2_P3 = 𝜃03 + 𝜃13 * P2.x + 𝜃23 * P2.y + 𝜃33 * P1.depth.
+
 Average depth of all the points between P2 and P3 is represented by AvD_P2_P3. 
 Function of the average depth of all the points between P2 and P3 in terms of the x-coordinate, y-coordinate, and depth of 
 point P2.
