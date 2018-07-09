@@ -128,6 +128,12 @@ the “model down-stairs” is detected. If there was some other object that the
 parameterized model will never give proper values all at the same time. Once a stair is found, the edges are marked, and the 
 distance of the edges from the camera is displayed, as shown in following figures.
 
+**Program modes:**
+The program can run in two modes – the **MODEL stairs detection mode** and the **REAL stairs detection mode**. The selected 
+mode is shown near the top right side of the display window. By default the program starts up in the MODEL stairs mode. 
+Pressing the ‘r’ key on the keyboard switches it into REAL stairs detection mode. Pressing ‘m’ switches the program back to 
+MODEL stairs mode. The distance of the stairs from the camera is shown near the top left side of the display window.
+
 <img src="https://github.com/abhanjac/stairs_detection_kinect_opencv/blob/master/images/down_stairs_detected_model_stairs.png">
 
 <img src="https://github.com/abhanjac/stairs_detection_kinect_opencv/blob/master/images/down_stairs_detected_real_stairs.png">
@@ -251,6 +257,7 @@ The cad drawing and the image of the actual setup is shown below.
 
 These are not two different setups. The upper part of the platform containing the kinect can be detatched and mounted at the 
 top of the lower section to configure it for REAL stairs.
+The kinect is also powered by a 12v battery to make the entire setup portable.
 
 # Results:
 The final working of the [detect_stairs](https://github.com/abhanjac/stairs_detection_kinect_opencv/blob/master/codes/detect_stairs.cpp)
