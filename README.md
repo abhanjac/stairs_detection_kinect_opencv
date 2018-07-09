@@ -18,7 +18,7 @@ Future work will focus on the use of more compact hardware which can be potentia
 * A small model stair is provided (image below). The algorithm should be able to detect that as well as real stairs. 
 * Algorithm should be able differentiate between stairs going up or down and measure the distance to the stairs. 
 when the user is close enough. 
-* All softwires should be open source. 
+* All software should be open source. 
 * Overall setup should be battery operated and should be portable enough for testing on actual stars. 
 
 # Current Framework: 
