@@ -246,6 +246,7 @@ distance of the edges from the camera is displayed, as shown in figure below.
 Finally a portable wheeled platform is created for the entire setup. 
 This was designed in **Solidworks**. 
 The cad drawing and the image of the actual setup is shown below. 
+The Solidworks files and images are also present in [solidworks_files](https://github.com/abhanjac/stairs_detection_kinect_opencv/tree/master/solidworks_files) directory.
 
 **Setup for detecting MODEL stairs:** 
 
