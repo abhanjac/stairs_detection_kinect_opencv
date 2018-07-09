@@ -1,6 +1,5 @@
 // ----------------------------------------------------------------------------- //
 // Detection of REAL and MODEL Stairs Moving Up and Down Using Image Processing. //
-// Submitted By:	David J. Cappelleri, Arindam Chowdhury, PURDUE UNIVERSITY	 //
 // Date:			December 2, 2016											 //
 // ----------------------------------------------------------------------------- //
 
