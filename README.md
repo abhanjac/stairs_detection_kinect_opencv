@@ -59,6 +59,71 @@ Since only first two steps are considered, so the two points adjacent to the fir
 will comprise a set of features for a single scan in the interest region. The points A and B show the location of the first 
 and the second edges of the stairs.
 
+An example of the four feature points of one particular scan is shown in the following figure.
+
+<img src="https://github.com/abhanjac/stairs_detection_kinect_opencv/blob/master/images/down_stairs_feature_points_location.png" width="500" height="200">
+
+P1 = Scanned Point just **below** the **first edge** location.
+P2 = Scanned Point just **above** the **first edge** location.
+P3 = Scanned Point just **below** the **second edge** location.
+P4 = Scanned Point just **above** the **second edge** location.
+
+### Parameterized model of “down-stairs”:
+In practice, there might be some other objects in the scene that can also have edges, e.g. the edge of a shelf, chair, set of drawers, etc. So, to know that these features truly represent a “down-stair”, we define a set of functions that describes the relationship between these features which constitutes a parameterized model of the “down-stairs” case.
+
+**1. FUNCTION_1:**
+P2.depth = 𝜃00 + 𝜃10 * P1.y + 𝜃20 * P1.depth
+Function of depth of point P2 in terms of the y-coordinate and depth of point P1.
+
+**2. FUNCTION_2:**
+P3.depth = 𝜃01 + 𝜃11 * P1.y + 𝜃21 * P1.depth
+Function of depth of point P3 in terms of the y-coordinate and depth of point P1.
+
+**3. FUNCTION_3:**
+P3.y = f (P1.x, P1.y, P1.depth) or,
+P3.y = 𝜃02 + 𝜃12 * P1.x + 𝜃22 * P1.y + 𝜃32 * P1.depth
+Function of the y-coordinate of point P3 in terms of the x-coordinate, y-coordinate, and depth of point P1.
+
+**4. FUNCTION_4:**
+AvD_P2_P3 = 𝜃03 + 𝜃13 * P2.x + 𝜃23 * P2.y + 𝜃33 * P1.depth
+Average depth of all the points between P2 and P3 is represented by AvD_P2_P3. 
+Function of the average depth of all the points between P2 and P3 in terms of the x-coordinate, y-coordinate, and depth of 
+point P2.
+
+All the 𝜃 are parameters that are determined by linear regression over 53 different example images of the actual REAL and 
+MODEL “down-stairs”.
+
+**Parameters: MODEL “down-stairs”:**
+
+𝜃00 = 164.2443 | 𝜃10 = -0.2036 | 𝜃20 = 1.0059
+𝜃01 = 184.0495 | 𝜃11 = 0.0413 | 𝜃21 = 0.9777
+
+𝜃02 = -47.0351 | 𝜃12 = 0.0163 | 𝜃22 = 0.7540 | 𝜃32 = 0.075
+𝜃03 = 13.7039 | 𝜃13 = -0.0537 | 𝜃23 = 0.082 | 𝜃33 = 0.9937
+
+**Parameters: REAL “down-stairs”**
+
+𝜃00 = 252.523 | 𝜃10 = -0.3195 | 𝜃20 = 0.9829
+𝜃01 = 334.1068 | 𝜃11 = -0.0223 | 𝜃21 = 0.985
+
+𝜃02 = -85.0389 | 𝜃12 = -0.0056 | 𝜃22 = 0.7835 | 𝜃32 = 0.041
+𝜃03 = 40.4137 | 𝜃13 = -0.0064 | 𝜃23 = 0.1426 | 𝜃33 = 1.001
+
+### How the algorithm works:
+The interest region is first extracted from every frame of the BGR and depth video feed of the Kinect. This region is then 
+scanned to search for feature points. If there are at least two locations along these scans, where the depth changes 
+abruptly, then (assuming them to be potential stair edges) the points adjacent to these locations are extracted as the four 
+feature points (P1, P2, P3, P4). The x and y coordinates and the depths of these points are saved for further analysis. 
+Their values are then plugged into the functions of the parameterized model. Now, the algorithm already knows what the 
+output values of these functions should be if the camera is really looking at the model “down-stairs”. If we observe that 
+the outputs of the functions are within some close acceptable thresholds of those values, then the algorithm declares that 
+the “model down-stairs” is detected. If there was some other object that the camera is looking at, then the functions of the 
+parameterized model will never give proper values all at the same time. Once a stair is found, the edges are marked, and the 
+distance of the edges from the camera is displayed, as shown in following figures.
+
+<img src="https://github.com/abhanjac/stairs_detection_kinect_opencv/blob/master/images/down_stairs_detected_model_stairs.png">
+
+<img src="https://github.com/abhanjac/stairs_detection_kinect_opencv/blob/master/images/down_stairs_detected_real_stairs.png">
 
 
 # Future Improvements: 
