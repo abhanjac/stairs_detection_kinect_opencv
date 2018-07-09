@@ -256,6 +256,12 @@ top of the lower section to configure it for REAL stairs.
 The final working of the [detect_stairs](https://github.com/abhanjac/stairs_detection_kinect_opencv/blob/master/codes/detect_stairs.cpp)
 can be seen in the videos in the [test_videos](https://github.com/abhanjac/stairs_detection_kinect_opencv/tree/master/testing_videos) directory.
 
+The videos can also be viewed on **Youtube** using the following links:
+* [video of detection of MODEL DOWN stairs](https://www.youtube.com/watch?v=G00To1GtQtI&feature=youtu.be)
+* [video of detection of MODEL UP stairs](https://www.youtube.com/watch?v=KZ8WtoTPJZ0&feature=youtu.be)
+* [video of detection of REAL DOWN stairs](https://www.youtube.com/watch?v=ioiHB1MyEKs&feature=youtu.be)
+* [video of detection of REAL UP stairs](https://www.youtube.com/watch?v=NkCATsoHP4I&feature=youtu.be)
+
 # Future Improvements: 
 * Use of a smaller depth camera like the Intel Realsense.
 * Use of compact single board computer like the Odroid or Raspberri Pi or Nvidia Jetson etc.
