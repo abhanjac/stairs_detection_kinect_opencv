@@ -1,6 +1,5 @@
 // ----------------------------------------------------------------------------- //
 // Detection of REAL and MODEL Stairs Moving Up and Down Using Image Processing. //
-// Date:			December 2, 2016											 //
 // ----------------------------------------------------------------------------- //
 
 // Including header files and namespaces.
