@@ -56,7 +56,10 @@ the following:
 The plot shows a sudden change in depth of the scanned points at the locations corresponding to the edges of the stairs. 
 These points adjacent to the edges are the feature points.
 Since only first two steps are considered, so the two points adjacent to the first step, and the two adjacent to the second, 
-will comprise a set of features for a single scan in the interest region.
+will comprise a set of features for a single scan in the interest region. The points A and B show the location of the first 
+and the second edges of the stairs.
+
+
 
 # Future Improvements: 
 * Use of a smaller depth camera like the Intel Realsense.
