@@ -270,6 +270,16 @@ The videos can also be viewed on **Youtube** using the following links:
 * [video of detection of REAL DOWN stairs](https://www.youtube.com/watch?v=ioiHB1MyEKs&feature=youtu.be) 
 * [video of detection of REAL UP stairs](https://www.youtube.com/watch?v=NkCATsoHP4I&feature=youtu.be) 
 
+Some snaps of the working system (for real stairs) can be seen in the following gifs.
+
+**REAL stairs (DOWN):** 
+
+<img src="https://github.com/abhanjac/stairs_detection_kinect_opencv/blob/master/testing_videos/vid_real_dn_stairs.gif" width="320" height="240"> 
+
+**REAL stairs (UP):** 
+
+<img src="https://github.com/abhanjac/stairs_detection_kinect_opencv/blob/master/testing_videos/vid_real_up_stairs.gif" width="320" height="240"> 
+
 # Future Improvements:  
 * Use of a smaller depth camera like the Intel Realsense. 
 * Use of compact single board computer like the Odroid or Raspberri Pi or Nvidia Jetson etc. 
