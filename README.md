@@ -2,6 +2,7 @@
 Detection of stairs using a Microsoft Kinect camera and Opencv libraries. 
 
 ---
+**A *Trailer* of Final Result:**
 
 | | |
 |:---:|:---:|
