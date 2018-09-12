@@ -1,6 +1,12 @@
 # Objective: 
 Detection of stairs using a Microsoft Kinect camera and Opencv libraries. 
 
+| | |
+|---|---|
+| <img src="https://github.com/abhanjac/stairs_detection_kinect_opencv/blob/master/testing_videos/vid_real_up_stairs.gif" width="320" height="240"> | <img src="https://github.com/abhanjac/stairs_detection_kinect_opencv/blob/master/testing_videos/vid_real_dn_stairs.gif" width="320" height="240"> |
+| [**YouTube Link**](https://www.youtube.com/watch?v=NkCATsoHP4I&feature=youtu.be) | [**YouTube Link**](https://www.youtube.com/watch?v=ioiHB1MyEKs&feature=youtu.be) |
+
+
 Project is focused towards incorporating this technology into prosthetic legs. 
 Prosthetic legs which are available in the market are usually devoid of any battery or motors or other types of active actuators. 
 So, when a patient or a user of these prosthetic legs is walking towards a set of stairs, he or she must manually switch over  
