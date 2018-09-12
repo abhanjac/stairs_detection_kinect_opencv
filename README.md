@@ -1,8 +1,8 @@
 # Objective: 
 Detection of stairs using a Microsoft Kinect camera and Opencv libraries. 
 
-**A *Trailer* of Final Result:**
 ---
+**A *Trailer* of Final Result:**
 | | |
 |:---:|:---:|
 | <img src="https://github.com/abhanjac/stairs_detection_kinect_opencv/blob/master/testing_videos/vid_real_up_stairs.gif" width="200" height="150"> | <img src="https://github.com/abhanjac/stairs_detection_kinect_opencv/blob/master/testing_videos/vid_real_dn_stairs.gif" width="200" height="150"> |
